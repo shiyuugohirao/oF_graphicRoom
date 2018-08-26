@@ -1,6 +1,5 @@
 #include "ofApp.h"
 
-float counter;
 float size = 77;
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -16,16 +15,16 @@ void ofApp::setup(){
             cube.push_back(c);
         }
     }
-
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    static float counter;
     ofSetWindowTitle(ofToString(ofGetFrameRate(),2));
+
     counter += 0.01;
     float noise = (sin(counter*0.5)+1)/2;
 
-    //for(auto &c:cube){ c->randomOrder(1000); }
     for(int i=0; i<cube.size(); i++){
         float n = ofNoise(counter+i);
         cube[i]->setSize(size + noise * n * size*2);
